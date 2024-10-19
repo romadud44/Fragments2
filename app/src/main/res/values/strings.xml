@@ -9,4 +9,11 @@
     <string name="text_number">№</string>
     <string name="text_text">Текст</string>
     <string name="text_date">Дата</string>
+    <string name="text_edit_note">Редактирование заметки</string>
+    <string name="text_text_note_TV">Текст заметки:</string>
+    <string name="text">text</string>
+    <string name="text_finish_TV">Выполнено?</string>
+    <string name="hint_number_ET">number</string>
+    <string name="text_number_TV">Номер заметки:</string>
+    <string name="text_edit_BTN">Изменить!</string>
 </resources>

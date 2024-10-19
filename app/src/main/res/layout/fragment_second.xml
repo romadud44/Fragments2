@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondFragment">
+
+    <TextView
+        android:id="@+id/titleEditTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_edit_note"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/layoutNumberLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/titleEditTV">
+
+        <TextView
+            android:id="@+id/numberNoteTV"
+            android:layout_width="@dimen/_100dp"
+            android:layout_height="@dimen/_50dp"
+
+            android:text="@string/text_number_TV"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/textNoteTV" />
+
+        <EditText
+            android:id="@+id/detailsNumberET"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="@string/hint_number_ET"
+            android:importantForAutofill="no"
+            android:textSize="@dimen/_18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textNoteTV"
+            app:layout_constraintTop_toBottomOf="@+id/titleEditTV" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutTextLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/layoutNumberLL">
+
+        <TextView
+            android:id="@+id/textNoteTV"
+            android:layout_width="@dimen/_100dp"
+            android:layout_height="@dimen/_50dp"
+
+            android:text="@string/text_text_note_TV"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/textNoteTV" />
+
+        <EditText
+            android:id="@+id/detailsTextET"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="@string/text"
+            android:importantForAutofill="no"
+            android:textSize="@dimen/_18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textNoteTV"
+            app:layout_constraintTop_toBottomOf="@+id/titleEditTV" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutCheckLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/layoutTextLL">
+
+        <TextView
+            android:id="@+id/checkNoteTV"
+            android:layout_width="@dimen/_100dp"
+            android:layout_height="@dimen/_50dp"
+
+            android:text="@string/text_finish_TV"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/textNoteTV" />
+
+        <CheckBox
+            android:id="@+id/detailsCheckCB"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/_18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textNoteTV"
+            app:layout_constraintTop_toBottomOf="@+id/titleEditTV" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/detailEditBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_edit_BTN"
+        android:textSize="@dimen/_24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

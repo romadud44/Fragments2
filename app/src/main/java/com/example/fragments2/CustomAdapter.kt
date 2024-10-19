@@ -16,6 +16,10 @@ class CustomAdapter(private val notes: MutableList<Note>) :
         val dateTV: TextView = itemView.findViewById(R.id.dateTV)
         val checkTV: CheckBox = itemView.findViewById(R.id.checkCB)
     }
+    private var onNoteClickListener: OnNoteClickListener? = null
+    interface OnNoteClickListener {
+        fun onNoteClick(note: Note, position: Int)
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,10 +37,15 @@ class CustomAdapter(private val notes: MutableList<Note>) :
         if (note.check){
             holder.checkTV.isChecked
         }
+        if(onNoteClickListener != null){
+            onNoteClickListener?.onNoteClick(note,position)
+        }
 
     }
 
     override fun getItemCount(): Int = notes.size
-
+    fun setOnNoteClickListener(onNoteClickListener: OnNoteClickListener){
+        this.onNoteClickListener = onNoteClickListener
+    }
 
 }

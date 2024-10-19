@@ -6,9 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fragments2.databinding.FragmentFirstBinding
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -16,6 +15,7 @@ import java.util.Locale
 
 @Suppress("UNREACHABLE_CODE")
 class FirstFragment : Fragment(R.layout.fragment_first) {
+    private lateinit var onFragmentDataListener: OnFragmentDataListener
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
     private var listAdapter: CustomAdapter? = null
@@ -23,29 +23,33 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        onFragmentDataListener = requireActivity() as OnFragmentDataListener
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val addBTN: Button = view.findViewById(R.id.addBTN)
-//        val addET: EditText = view.findViewById(R.id.addET)
-//        val recyclerViewRV: RecyclerView = view.findViewById(R.id.recyclerviewRV)
 
 
+        listAdapter?.notifyDataSetChanged()
+        binding.recyclerviewRV.layoutManager = LinearLayoutManager(requireContext())
         listAdapter = CustomAdapter(Note.notes)
         binding.recyclerviewRV.adapter = listAdapter
-        listAdapter?.notifyDataSetChanged()
-
         binding.recyclerviewRV.setHasFixedSize(true)
+        listAdapter?.setOnNoteClickListener(object :
+            CustomAdapter.OnNoteClickListener {
+            override fun onNoteClick(note: Note, position: Int) {
+                Toast.makeText(requireActivity(), "клик", Toast.LENGTH_LONG).show()
 
+                onFragmentDataListener.onData(note)
 
+            }
+        })
+        binding.recyclerviewRV
 
         binding.addBTN.setOnClickListener {
             val (currentDate, dateFormat, timeFormat) = triple()
@@ -59,6 +63,7 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
 
 
         }
+
     }
 
     private fun triple(): Triple<Date, SimpleDateFormat, SimpleDateFormat> {
