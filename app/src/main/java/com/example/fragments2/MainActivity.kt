@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.fragments2.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity(), OnFragmentDataListener {
+class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity(), OnFragmentDataListener {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val firstFragment = FirstFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.main, firstFragment).commit()
+//        val firstFragment = FirstFragment()
+//        supportFragmentManager.beginTransaction().replace(R.id.main, firstFragment).commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -47,17 +47,18 @@ class MainActivity : AppCompatActivity(), OnFragmentDataListener {
 
         return super.onOptionsItemSelected(item)
     }
-
-    override fun onData(data: Note?) {
-        val bundle = Bundle()
-        bundle.putParcelable("note", data)
-        val transaction = this.supportFragmentManager.beginTransaction()
-        val secondFragment = SecondFragment()
-        secondFragment.arguments = bundle
-
-        transaction.replace(R.id.main, secondFragment)
-        transaction.addToBackStack(null)
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-        transaction.commit()
-    }
+//
+//    override fun onData(data: Note?) {
+//        val bundle = Bundle()
+//        val secondFragment = SecondFragment()
+//        bundle.putParcelable("note", data)
+//        val transaction = this.supportFragmentManager.beginTransaction()
+//
+//        secondFragment.arguments = bundle
+//
+//        transaction.replace(R.id.fragmentContainer, secondFragment)
+//        transaction.addToBackStack(null)
+//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//        transaction.commit()
+//    }
 }

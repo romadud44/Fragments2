@@ -25,7 +25,8 @@ class CustomAdapter(private val notes: MutableList<Note>) :
         parent: ViewGroup,
         viewType: Int
     ): NoteViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item, parent, false)
         return NoteViewHolder(itemView)
     }
 
@@ -37,13 +38,17 @@ class CustomAdapter(private val notes: MutableList<Note>) :
         if (note.check){
             holder.checkTV.isChecked
         }
-        if(onNoteClickListener != null){
-            onNoteClickListener?.onNoteClick(note,position)
+        holder.itemView.setOnClickListener {
+            if (onNoteClickListener != null) {
+                onNoteClickListener?.onNoteClick(note, position)
+            }
         }
 
     }
 
     override fun getItemCount(): Int = notes.size
+
+
     fun setOnNoteClickListener(onNoteClickListener: OnNoteClickListener){
         this.onNoteClickListener = onNoteClickListener
     }
