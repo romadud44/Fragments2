@@ -24,7 +24,7 @@ class FirstFragment : Fragment(R.layout.fragment_first), OnFragmentDataListener 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        onFragmentDataListener = requireActivity() as OnFragmentDataListener
+
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -34,8 +34,7 @@ class FirstFragment : Fragment(R.layout.fragment_first), OnFragmentDataListener 
         super.onViewCreated(view, savedInstanceState)
 
 
-//
-//        listAdapter?.notifyDataSetChanged()
+
         binding.recyclerviewRV.layoutManager = LinearLayoutManager(requireActivity())
         listAdapter = CustomAdapter(Note.notes)
         binding.recyclerviewRV.adapter = listAdapter
@@ -44,7 +43,7 @@ class FirstFragment : Fragment(R.layout.fragment_first), OnFragmentDataListener 
         listAdapter?.setOnNoteClickListener(object :
             CustomAdapter.OnNoteClickListener {
             override fun onNoteClick(note: Note, position: Int) {
-                Toast.makeText(requireActivity(), "клик", Toast.LENGTH_LONG).show()
+
 
                 onData(note, position)
 

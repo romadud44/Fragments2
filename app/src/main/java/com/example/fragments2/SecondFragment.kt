@@ -32,7 +32,7 @@ class SecondFragment : Fragment() {
         detailsPosition = arguments?.getInt("position")
         binding.detailsTextET.setText(detailsNote?.text)
         binding.detailsNumberET.setText(detailsNote?.id.toString())
-        if (detailsNote?.check == true) binding.detailsCheckCB.isChecked
+        if (detailsNote?.check == true) binding.detailsCheckCB.isChecked = true
 
         binding.detailEditBTN.setOnClickListener {
             val (currentDate, dateFormat, timeFormat) = triple()

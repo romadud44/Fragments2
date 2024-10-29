@@ -36,11 +36,11 @@ class CustomAdapter(private val notes: MutableList<Note>) :
         holder.textTV.text = note.text
         holder.dateTV.text = note.date
         if (note.check){
-            holder.checkTV.isChecked
+            holder.checkTV.isChecked = true
         }
         holder.itemView.setOnClickListener {
             if (onNoteClickListener != null) {
-                onNoteClickListener?.onNoteClick(note, position)
+                onNoteClickListener?.onNoteClick(Note(note.id, note.text, note.date, holder.checkTV.isChecked), position)
             }
         }
 
